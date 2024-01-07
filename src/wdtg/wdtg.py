@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 import sys
+import requests
 
 def get_url_end_location(url = ''):
+    r = requests.head(url=url, allow_redirects=True)
     return url
 
 def main() -> int:
