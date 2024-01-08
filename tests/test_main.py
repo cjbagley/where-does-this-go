@@ -20,7 +20,7 @@ class TestMain(unittest.TestCase):
         self.assertEqual(result_1, expected_1)
 
         value_2 = 'https://bbc.co.uk?test=2&3 \';`; DROP *'
-        expected_2 = 'https://bbc.co.uk?test%3D2&3%20%27'
+        expected_2 = 'https://bbc.co.uk?test=2&3'
         result_2 = sanitise_url(value_2)
         self.assertEqual(result_2, expected_2)
 

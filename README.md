@@ -12,3 +12,6 @@ To this end, I just want to know where the actual end url behind the mail url is
 https://bobski.com/great-offer
 
 I built this little CLI tool so you can pass in a url, and Python will follow the headers only to see where it goes.
+
+Usage:
+python(3) src/wdtg/wdtg.py [url to follow, e.g. https://bbc.co.uk]

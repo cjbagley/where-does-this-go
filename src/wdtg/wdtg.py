@@ -11,13 +11,13 @@ def get_url_end_location(url=''):
 
 
 def sanitise_url(url) -> str:
-    trim_after = [';', '`', '*', '!']
+    trim_after = [';', '`', '*', '!', '\'']
     trimmed_url = url
     for i, char in enumerate(url):
         if char in trim_after:
             trimmed_url = trimmed_url[:i]
-            break
-    return urllib.parse.quote(trimmed_url, safe='/:?&')
+    parsed = urllib.parse.quote(trimmed_url.strip(), safe='/:?\\&')
+    return urllib.parse.unquote(parsed)
 
 
 def is_valid_url(url) -> bool:
@@ -45,7 +45,7 @@ def main() -> int:
     args = __get_args()
     url = sanitise_url(args.url)
     if not is_valid_url(url):
-        print("Invalid URL given")
+        print("Invalid URL. Note: include scheme, e.g. https://bbc.co.uk")
         return 1
     result = get_url_end_location(url)
     print(result)
