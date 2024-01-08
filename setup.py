@@ -5,7 +5,7 @@ with open('README.md') as file:
 
 setup(
     name='where-does-this-go',
-    version='0.0.1',
+    version='1.0.0',
     packages=['wdtg'],
     package_dir={'': 'src'},
     python_requires=">=3.8",

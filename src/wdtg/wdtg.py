@@ -6,7 +6,8 @@ import urllib.parse
 
 
 def get_url_end_location(url=''):
-    return requests.head(url=url, allow_redirects=True).url
+    url = requests.head(url=url, allow_redirects=True).url
+    return url.strip('/')
 
 
 def sanitise_url(url) -> str:
@@ -41,11 +42,15 @@ def __get_args():
 
 
 def main() -> int:
+    args = __get_args()
+    url = sanitise_url(args.url)
+    if not is_valid_url(url):
+        print("Invalid URL given")
+        return 1
+    result = get_url_end_location(url)
+    print(result)
     return 0
 
 
 if __name__ == '__main__':
-    args = __get_args()
-    result = get_url_end_location(args.url)
-    print(result)
     sys.exit(main())
